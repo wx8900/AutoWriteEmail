@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 /**
  * @author Jack
  *
- * 1. 现在Spring Boot 要强制配置application-test.yml文件
- * 2. 添加启动TestApplication类参数spring.profiles.active=test
+ * 1. Spring Boot requires to set up application-test.yml
+ * 2. Add parameter spring.profiles.active=test for TestApplication class
  */
 @SpringBootApplication
 public class TestApplication {

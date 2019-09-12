@@ -19,7 +19,7 @@
             cache: false,
             timeout: 600000,
                 error: function(){
-                       alert("失败了");
+                       alert("Failure to get data!");
                 },
                 success: function(data) {
                        $("#res").empty();
@@ -32,6 +32,7 @@
 </head>
 
 <body>
+</br></br>
 <center><h1>Email Writing System</h1></center></body></br></br>
     <h3>User Input ： </h3>
     <textarea class="comments" cols="9" rows="6" id="area1" name=s1 onpropertychange="this.style.posHeight=this.scrollHeight"
