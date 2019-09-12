@@ -28,16 +28,23 @@
             })
         }
 
+        function clearValue() {
+            $("#area1").val("");
+            document.getElementById('res').innerHTML = "";
+            $("#res")[0].innerHTML="";
+            $("#res").html("");
+        }
     </script>
 </head>
 
 <body>
 </br></br>
-<center><h1>Email Writing System</h1></center></body></br></br>
-    <h3>User Input ： </h3>
-    <textarea class="comments" cols="9" rows="6" id="area1" name=s1 onpropertychange="this.style.posHeight=this.scrollHeight"
+<center><h1>Email Auto Writing System</h1></center></body></br></br>
+    <h2>User Input ： </h2>
+    <textarea id="area1" name="s1" class="comments" cols="9" rows="6" onpropertychange="this.style.posHeight=this.scrollHeight"
               ></textarea></br></br>
-    <input id="area1-button" onclick="go($('#area1').val())" type="button" value="Get Value"/>
+    <input id="area1-button" onclick="go($('#area1').val())" type="button" value="Get Value"/>&nbsp;&nbsp;&nbsp;
+    <input id="clear-button" onclick="clearValue()" type="button" value="Clean"/>
     <div id="res"></div>
 
 </body>
