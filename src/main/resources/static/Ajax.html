@@ -20,9 +20,9 @@
         function go(wordInput) {
             if(CheckIsNullOrEmpty(wordInput)) {
                 var newLen = wordInput.length;
-                alert("oldTextVal.length : " + oldTextVal.length + ", newLen : " + newLen);
+                //alert("oldTextVal.length : " + oldTextVal.length + ", newLen : " + newLen);
                 var word = wordInput.substr(oldTextVal.length, newLen);
-                alert("word : " + word);
+
                 $.ajax({
                 type:"POST",
                 async:"false",
