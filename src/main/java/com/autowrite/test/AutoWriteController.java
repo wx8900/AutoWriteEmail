@@ -1,36 +1,21 @@
 package com.autowrite.test;
 
-import java.util.*;
-import java.util.concurrent.ConcurrentHashMap;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
-import org.springframework.web.bind.annotation.*;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+import java.util.Scanner;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * @author Jack
  */
 @RestController
 public class AutoWriteController {
-
-    @RequestMapping("/home")
-    @ResponseBody
-    String home() {
-        return "Hello World!";
-    }
-
-    @RequestMapping("/hello")
-    public String hello() {
-        return "Hello 123 abc 123 123 !!!";
-    }
-
-    @RequestMapping("/hello1")
-    public String hello1() {
-        return "Hello World";
-    }
-
-    @RequestMapping("/hello2")
-    public List<String> hello2() {
-        return Arrays.asList(new String[] { "A", "B", "C" });
-    }
 
     private static Map<String, String> map = new ConcurrentHashMap<>();
     private static StringBuffer sb = new StringBuffer(1024);
@@ -64,7 +49,7 @@ public class AutoWriteController {
         map.put("status", "Could you please let me know the status of this project? ");
         map.put("support", "Please feel free to call me at any time, I will continually provide full support. ");
         map.put("question", " If you’re any questions please let me know.");
-        map.put("respond","Once you respond to the above questions, we will decide which option we would like to pursue. ");
+        map.put("respond", "Once you respond to the above questions, we will decide which option we would like to pursue. ");
         map.put("estimation", "Thank you and look forward to having your opinion on the estimation and schedule. ");
         map.put("concerns", "Let me know if you have any questions or concerns. ");
         map.put("ASAP", "as soon as possible. ");
@@ -77,27 +62,6 @@ public class AutoWriteController {
         map.put("CMB", "Call me back. ");
     }
 
-    /**
-     * API for calling
-     * @param word
-     * @return
-     */
-    @RequestMapping("/customerInputWord")
-    public String customerInputWord(@RequestParam("word") String word) {
-        return simulateMLReturn(word);
-    }
-
-    private String simulateMLReturn(String keyword) {
-        if (keyword != null && keyword.trim().length() > 0) {
-            if (map.containsKey(keyword.trim())) {
-                sb.append(map.get(keyword));
-            }
-        }
-
-        System.out.println(sb.toString());
-        return sb.toString();
-    }
-
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         if (scanner.hasNextLine()) {
@@ -108,6 +72,49 @@ public class AutoWriteController {
         }
         System.out.println(sb.toString());
         scanner.close();
+    }
+
+    @RequestMapping("/home")
+    @ResponseBody
+    String home() {
+        return "Hello World!";
+    }
+
+    @RequestMapping("/hello")
+    public String hello() {
+        return "Hello 123 abc 123 123 !!!";
+    }
+
+    @RequestMapping("/hello1")
+    public String hello1() {
+        return "Hello World";
+    }
+
+    @RequestMapping("/hello2")
+    public List<String> hello2() {
+        return Arrays.asList("A", "B", "C");
+    }
+
+    /**
+     * API for calling
+     *
+     * @param word
+     * @return
+     */
+    @RequestMapping("/customerInputWord")
+    public String customerInputWord(@RequestParam("word") String word) {
+        return simulateMlReturn(word);
+    }
+
+    private String simulateMlReturn(String keyword) {
+        if (keyword != null && keyword.trim().length() > 0) {
+            if (map.containsKey(keyword.trim())) {
+                sb.append(map.get(keyword));
+            }
+        }
+
+        System.out.println(sb.toString());
+        return sb.toString();
     }
 
 }
